@@ -9,8 +9,8 @@ class StringCalculator
 
     delimiter = /,|\n/
     if numbers.start_with?("//")
-      delimiter, numbers = numbers.split("\n", 2)
-      delimiter = Regexp.escape(delimiter[2..-1].chop)
+      delimiters, numbers = numbers.split("\n", 2)
+      delimiter = delimiters.scan(/\[([^\]]+)\]/).flatten.map { |d| Regexp.escape(d) }.join('|')
     end
 
     num_array = numbers.split(Regexp.new(delimiter)).map(&:to_i).reject { |num| num > 1000 }
