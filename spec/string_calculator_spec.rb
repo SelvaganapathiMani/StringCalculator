@@ -37,5 +37,11 @@ describe StringCalculator do
   it 'raises an exception with all negative numbers' do
     expect { @calculator.add('1,-2,3,-4') }.to raise_error('negatives not allowed: -2, -4')
   end
+
+  it 'counts the number of times add method is called' do
+    @calculator.add('1,2')
+    @calculator.add('3,4')
+    expect(@calculator.get_called_count).to eq(2)
+  end
   
 end
