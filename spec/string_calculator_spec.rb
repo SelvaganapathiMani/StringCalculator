@@ -43,5 +43,9 @@ describe StringCalculator do
     @calculator.add('3,4')
     expect(@calculator.get_called_count).to eq(2)
   end
+
+  it 'ignores numbers bigger than 1000' do
+    expect(@calculator.add('2,1001')).to eq(2)
+  end
   
 end

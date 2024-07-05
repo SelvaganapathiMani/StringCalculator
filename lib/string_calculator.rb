@@ -13,7 +13,7 @@ class StringCalculator
       delimiter = delimiter[2..]
     end
 
-    num_array = numbers.split(delimiter).map(&:to_i)
+    num_array = numbers.split(delimiter).map(&:to_i).reject { |num| num > 1000 }
     negatives = num_array.select { |num| num < 0 }
     raise "negatives not allowed: #{negatives.join(', ')}" unless negatives.empty?
 
