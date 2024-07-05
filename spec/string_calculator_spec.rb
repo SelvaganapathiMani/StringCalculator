@@ -51,9 +51,13 @@ describe StringCalculator do
   it 'supports delimiters of any length' do
     expect(@calculator.add("//[***]\n1***2***3")).to eq(6)
   end
-  
+
   it 'allows multiple delimiters' do
     expect(@calculator.add("//[*][%]\n1*2%3")).to eq(6)
-  end  
+  end 
+  
+  it 'handles multiple delimiters with length longer than one character' do
+    expect(@calculator.add("//[**][%%]\n1**2%%3")).to eq(6)
+  end
 
 end
